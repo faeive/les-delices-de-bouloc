@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Délices de Bouloc - Restaurant de restauration rapide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #e91e63; /* Rose */
+            --secondary-color: #ffffff; /* Blanc */
+            --dark-color: #222222; /* Noir */
+            --light-color: #f8f8f8;
+            --accent-color: #ff4081;
+            --text-color: #333333;
+            --border-radius: 8px;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--secondary-color);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-alt {
+            background-color: var(--light-color);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 12px 28px;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--secondary-color);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .logo i {
+            margin-right: 10px;
+            font-size: 1.8rem;
+        }
+
+        .nav-links {
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--dark-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://lh3.googleusercontent.com/gps-cs-s/AG0ilSykGj9FxjtZEcP1gFfcMyQsPea2-n_7OorEmfVoUSv5-lrskJKSGe_AjCEWj3wEWbV0cMoUSd619bIMISWdSOj2wY3FMl52ACAss-RQ6XXM1zutQnMNwm9k6OXT-RfTbk2Q34-I=s1360-w1360-h1020-rw') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--secondary-color);
+            margin-top: 70px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+        }
+
+        /* Restaurant Section */
+        .restaurant-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .restaurant-text ul {
+            margin-top: 1.5rem;
+        }
+
+        .restaurant-text li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .restaurant-text li i {
+            color: var(--primary-color);
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        .restaurant-image img {
+            width: 100%;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            object-fit: cover;
+            height: 400px;
+        }
+
+        /* Menu Section */
+        .menu-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .menu-category {
+            background-color: var(--secondary-color);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .menu-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .menu-category h3 {
+            display: flex;
+            align-items: center;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .menu-category h3 i {
+            margin-right: 10px;
+        }
+
+        .menu-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px dashed #eee;
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+        }
+
+        .item-name {
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        .item-price {
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-left: 10px;
+            white-space: nowrap;
+        }
+
+        .item-description {
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        .supplements {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            height: 250px;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Modal pour les images */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 80%;
+            margin-top: 50px;
+            border-radius: var(--border-radius);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .close-modal:hover {
+            color: var(--primary-color);
+        }
+
+        .modal-caption {
+            text-align: center;
+            color: #fff;
+            padding: 15px 20px;
+            font-size: 1.1rem;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: var(--border-radius);
+            margin: 20px auto;
+            max-width: 80%;
+        }
+
+        /* Informations Section */
+        .infos-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .info-card {
+            background-color: var(--secondary-color);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .info-card i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .info-card h3 {
+            margin-bottom: 1.2rem;
+        }
+
+        .hours-table {
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .hours-table tr {
+            border-bottom: 1px solid #eee;
+        }
+
+        .hours-table td {
+            padding: 8px 0;
+        }
+
+        .hours-table tr:last-child {
+            border-bottom: none;
+        }
+
+        .highlight {
+            background-color: #fff5f8;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            margin-top: 1.5rem;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .highlight p {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .highlight i {
+            color: var(--primary-color);
+            margin-right: 10px;
+            font-size: 1rem;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-right: 15px;
+            width: 30px;
+        }
+
+        .phone-link {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            transition: var(--transition);
+        }
+
+        .phone-link:hover {
+            color: var(--primary-color);
+        }
+
+        .map-container {
+            height: 400px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: var(--secondary-color);
+            padding: 3rem 0 1.5rem;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-social {
+            display: flex;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin: 0 10px;
+            transition: var(--transition);
+        }
+
+        .footer-social a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            width: 100%;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .restaurant-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .restaurant-content {
+                gap: 2rem;
+            }
+            
+            .restaurant-image {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                width: 80%;
+                height: calc(100vh - 70px);
+                background-color: var(--secondary-color);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 3rem;
+                transition: 0.5s;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 0 0 2rem 0;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            
+            .menu-categories {
+                grid-template-columns: 1fr;
+            }
+            
+            section {
+                padding: 3rem 0;
+            }
+            
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+            
+            .modal-content {
+                margin-top: 100px;
+                max-width: 95%;
+            }
+            
+            .close-modal {
+                top: 20px;
+                right: 20px;
+                font-size: 35px;
+            }
+            
+            .modal-caption {
+                font-size: 1rem;
+                padding: 10px 15px;
+                max-width: 90%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-content p {
+                font-size: 1rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .gallery {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .infos-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .info-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#accueil" class="logo">
+                <i class="fas fa-utensils"></i>
+                Les Délices de Bouloc
+            </a>
+            
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#restaurant">Le Restaurant</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#galerie">Galerie</a></li>
+                <li><a href="#informations">Infos Pratiques</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="accueil">
+        <div class="container hero-content">
+            <div>
+                <h1>Les Délices de Bouloc</h1>
+                <p>Des saveurs généreuses pour tous les gourmands</p>
+                <a href="#menu" class="btn">Voir le menu</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Restaurant Section -->
+    <section id="restaurant" class="section-alt">
+        <div class="container">
+            <h2>Le Restaurant</h2>
+            <div class="restaurant-content">
+                <div class="restaurant-text">
+                    <p>Bienvenue aux <strong>Délices de Bouloc</strong>, votre restaurant de restauration rapide préféré à Bouloc. Nous vous proposons une cuisine généreuse et savoureuse, préparée sur place avec des produits sélectionnés avec soin.</p>
+                    <p>Notre équipe passionnée travaille chaque jour pour vous offrir des plats de qualité, préparés avec amour et dans le respect des traditions culinaires.</p>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Cuisine respectant les valeurs halal</li>
+                        <li><i class="fas fa-check-circle"></i> Viandes halal de qualité</li>
+                        <li><i class="fas fa-check-circle"></i> Frites préparées sur place</li>
+                        <li><i class="fas fa-check-circle"></i> Plats préparés à la commande</li>
+                        <li><i class="fas fa-check-circle"></i> Produits frais et sélectionnés</li>
+                    </ul>
+                </div>
+                <div class="restaurant-image">
+                    <img src="https://lh3.googleusercontent.com/gps-cs/AHvCnQxAJxmVkiZxQzzR2KYYuzc05eK30PfgE0iiCS2s-gR3KsFslJsjarItT2NCxl5D24F4RwNme-Jqs1NwQxq27qpt0yD-WRz9j_nKCPKXlkiYGXdlumnvXMBZzRZDlnkc5clZZc4=w750-h704-p-k-no" alt="Façade du restaurant Les Délices de Bouloc">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu">
+        <div class="container">
+            <h2>Notre Menu</h2>
+            
+            <div class="menu-categories">
+                <!-- Tacos & Bowls -->
+                <div class="menu-category">
+                    <h3><i class="fas fa-utensil-spoon"></i> TACOS & BOWLS</h3>
+                    
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <div class="item-name">Tacos</div>
+                            <div class="item-price">À partir de 6€</div>
+                        </div>
+                        <div class="item-description">
+                            Tortilla, frites, sauce au choix, fromage
+                        </div>
+                        <div class="supplements">
+                            <strong>Supplements viandes (+2€ par viande):</strong> Tenders, Nuggets, Cordon bleu, Kebab, Steak haché, Merguez, Poulet mariné, Kefta, Crispy vegan
+                        </div>
+                        <div class="supplements">
+                            <strong>Supplements gratinage (+2€):</strong> Lardon, 3 fromages, Chèvre miel, Pizza, Emmental, Emmental & lardons, Emmental, chèvre & cheddar, Fromage de chèvre & miel, Mozzarella & sauce tomate
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <div class="item-name">Bowl</div>
+                            <div class="item-price">À partir de 7€</div>
+                        </div>
+                        <div class="item-description">
+                            Base frites ou salade, sauce au choix
+                        </div>
+                        <div class="supplements">
+                            <strong>Supplements identiques aux tacos</strong>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Burgers -->
+                <div class="menu-category">
+                    <h3><i class="fas fa-hamburger"></i> BURGERS</h3>
+                    
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <div class="item-name">Cheese Burger</div>
+                            <div class="item-price">7€</div>
+                        </div>
+                        <div class="item-description">
+                            Pain, steak haché, fromage, salade, sauce
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <div class="item-name">Chicken Burger</div>
+                            <div class="item-price">7€</div>
+                        </div>
+                        <div class="item-description">
+                            Pain, poulet, fromage, salade, sauce
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <div class="item-name">Double K</div>
+                            <div class="item-price">9€</div>
+                        </div>
+                        <div class="item-description">
+                            Pain, steak haché, fromage, salade, sauce
+                        </div>
+                    </div>
+                    
+                    <div class="supplements">
+                        <strong>Supplements (+2€):</strong> Steak haché, Poulet, Galette de pomme de terre, Fromage
+                    </div>
+                </div>
+                
+                <!-- Paninis & Sandwichs -->
+                <div class="menu-category">
+                    <h3><i class="fas fa-bread-slice"></i> PANINIS & SANDWICHS</h3>
+                    
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <div class="item-name">Panini Poulet</div>
+                            <div class="item-price">6€</div>
+                        </div>
+                        <div class="item-description">
+                            Pain panini, poulet, fromage, sauce
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <div class="item-name">Panini Kebab</div>
+                            <div class="item-price">6€</div>
+                        </div>
+                        <div class="item-description">
+                            Pain panini, kebab, fromage, sauce
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <div class="item-name">Panini 3 Fromages</div>
+                            <div class="item-price">6€</div>
+                        </div>
+                        <div class="item-description">
+                            Pain panini, trois fromages fondants
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <div class="item-name">Kebab</div>
+                            <div class="item-price">6€</div>
+                        </div>
+                        <div class="item-description">
+                            Pain kebab, viande kebab, crudités, sauce
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <div class="item-name">Le Boulocain</div>
+                            <div class="item-price">7€</div>
+                        </div>
+                        <div class="item-description">
+                            Pain boulocain, viande, crudités, sauce
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <div class="item-name">Le Délice</div>
+                            <div class="item-price">7€</div>
+                        </div>
+                        <div class="item-description">
+                            Pain délice, viande, crudités, sauce
+                        </div>
+                    </div>
+                    
+                    <div class="supplements">
+                        <strong>Supplements:</strong> Viande : +2€ | Œuf ou fromage : +1,5€
+                    </div>
+                </div>
+                
+                <!-- Assiettes -->
+                <div class="menu-category">
+                    <h3><i class="fas fa-utensils"></i> ASSIETTES</h3>
+                    
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <div class="item-name">Assiette</div>
+                            <div class="item-price">À partir de 5€</div>
+                        </div>
+                        <div class="item-description">
+                            Frites et salade fraîche
+                        </div>
+                        <div class="supplements">
+                            <strong>Supplements viandes : +2€ par viande</strong> (même choix que pour les tacos)
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="highlight">
+                <p><i class="fas fa-info-circle"></i> Tous nos plats sont préparés sur place avec des produits frais et sélectionnés.</p>
+                <p><i class="fas fa-info-circle"></i> Nos frites sont coupées et préparées quotidiennement dans notre restaurant.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="galerie" class="section-alt">
+        <div class="container">
+            <h2>Galerie</h2>
+            <div class="gallery">
+                <div class="gallery-item" data-index="0">
+                    <img src="https://lh3.googleusercontent.com/gps-cs-s/AG0ilSykGj9FxjtZEcP1gFfcMyQsPea2-n_7OorEmfVoUSv5-lrskJKSGe_AjCEWj3wEWbV0cMoUSd619bIMISWdSOj2wY3FMl52ACAss-RQ6XXM1zutQnMNwm9k6OXT-RfTbk2Q34-I=s1360-w1360-h1020-rw" alt="Plats variés du restaurant">
+                </div>
+                <div class="gallery-item" data-index="1">
+                    <img src="https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzZVvTOk_T7UiqxAiE7f56Rozn4b6IuYXTZXlWVbjGJLkbXhXeGsJWNLwDbkBiVkmhNhUYYa68Q0fkNuNDjr-7MVAyWKDa0aHiScpOLozn04-nWzCoimZzT25020E2XhjlczX4h=s1360-w1360-h1020-rw" alt="Burger maison">
+                </div>
+                <div class="gallery-item" data-index="2">
+                    <img src="https://lh3.googleusercontent.com/p/AF1QipNFxMhIddaHTXrj9w5Fokt-TEMgj-diokkHI8W7=s1360-w1360-h1020-rw" alt="Tacos français">
+                </div>
+                <div class="gallery-item" data-index="3">
+                    <img src="https://lh3.googleusercontent.com/p/AF1QipPKK37OvxxD3Dj5xkkARJRxybf4mBrBFzCtImj6=s1360-w1360-h1020-rw" alt="Panini gourmand">
+                </div>
+                <div class="gallery-item" data-index="4">
+                    <img src="https://lh3.googleusercontent.com/p/AF1QipNRpttNmUXcdfQ-loKDhb7RccY89rxcF-zk3AMk=s1360-w1360-h1020-rw" alt="Assiette complète">
+                </div>
+                <div class="gallery-item" data-index="5">
+                    <img src="https://lh3.googleusercontent.com/p/AF1QipPqTnnTeSgPmeD3Khax-njP00I1pcSBXNTqA5KJ=s1360-w1360-h1020-rw" alt="Sandwich délicieux">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal pour les images -->
+    <div id="imageModal" class="modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <div id="modalCaption" class="modal-caption"></div>
+    </div>
+
+    <!-- Informations Section -->
+    <section id="informations">
+        <div class="container">
+            <h2>Informations Pratiques</h2>
+            <div class="infos-container">
+                <div class="info-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Adresse</h3>
+                    <p>4A Rue Jean Jaurès<br>31620 Bouloc, France</p>
+                </div>
+                
+                <div class="info-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Horaires</h3>
+                    <table class="hours-table">
+                        <tr>
+                            <td>Lundi – Jeudi</td>
+                            <td>11h30 – 14h / 18h30 – 21h</td>
+                        </tr>
+                        <tr>
+                            <td>Vendredi</td>
+                            <td>18h30 – 21h</td>
+                        </tr>
+                        <tr>
+                            <td>Samedi</td>
+                            <td>11h30 – 14h / 18h30 – 21h</td>
+                        </tr>
+                        <tr>
+                            <td>Dimanche</td>
+                            <td>18h30 – 21h</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div class="info-card">
+                    <i class="fas fa-info-circle"></i>
+                    <h3>Informations</h3>
+                    <p>Notre restaurant vous accueille dans une ambiance chaleureuse et conviviale.</p>
+                    <div class="highlight">
+                        <p><i class="fas fa-french-fries"></i> Frites préparées sur place</p>
+                        <p><i class="fas fa-drumstick-bite"></i> Viandes halal</p>
+                        <p><i class="fas fa-mosque"></i> Cuisine respectant les valeurs halal</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-alt">
+        <div class="container">
+            <h2>Contact</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Nous contacter</h3>
+                    <p>Pour toute question ou réservation, n'hésitez pas à nous contacter par téléphone.</p>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <p>Téléphone</p>
+                            <a href="tel:0532539760" class="phone-link">05 32 53 97 60</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <p>Adresse</p>
+                            <p>4A Rue Jean Jaurès, 31620 Bouloc, France</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <p>Horaires d'ouverture</p>
+                            <p>Consultez nos horaires dans la section "Informations Pratiques"</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2878.1386920687447!2d1.4053558154775864!3d43.831040979115514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12ac38b0fc7f1b61%3A0xcaec84b3f8c6cb6c!2s4A%20Rue%20Jean%20Jaur%C3%A8s%2C%2031620%20Bouloc%2C%20France!5e0!3m2!1sfr!2sfr!4v1685789267890!5m2!1sfr!2sfr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-logo">
+                <i class="fas fa-utensils"></i> Les Délices de Bouloc
+            </div>
+            
+            <p>Des saveurs généreuses pour tous les gourmands</p>
+            
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-tripadvisor"></i></a>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2023 Les Délices de Bouloc. Tous droits réservés.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Header background on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if(window.scrollY > 50) {
+                header.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            }
+        });
+
+        // Galerie modale
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const captionText = document.getElementById('modalCaption');
+        const closeModal = document.querySelector('.close-modal');
+
+        // Titres pour chaque image
+        const imageTitles = [
+            "Nos plats variés et gourmands",
+            "Notre célèbre Burger Maison",
+            "Tacos français préparés avec soin",
+            "Panini gourmand et généreux",
+            "Assiette complète avec frites maison",
+            "Sandwich délicieux et frais"
+        ];
+
+        // Ouvrir la modal au clic sur une image
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const index = this.getAttribute('data-index');
+                modal.style.display = "block";
+                modalImg.src = this.querySelector('img').src;
+                captionText.innerHTML = imageTitles[index] || "Plat des Délices de Bouloc";
+            });
+        });
+
+        // Fermer la modal
+        closeModal.addEventListener('click', function() {
+            modal.style.display = "none";
+        });
+
+        // Fermer la modal en cliquant en dehors de l'image
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+
+        // Fermer la modal avec la touche Échap
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.style.display === "block") {
+                modal.style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>
